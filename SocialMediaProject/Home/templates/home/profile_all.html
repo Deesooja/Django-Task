@@ -1,0 +1,28 @@
+<!-- Extending base html -->
+{% extends 'home/base.html' %}
+
+
+<!-- Link your custom css file here -->
+{% block mycss%}
+
+<link rel="stylesheet" href="../../static/home/css/profile.css">
+{% endblock mycss%}
+
+<!-- title name -->
+{% block title %}
+
+<title>profile-all</title>
+
+{% endblock title %}
+
+<!-- write your code hare -->
+{% block content %}
+<h1>Profile all</h1>
+<button id="btn" >click</button>
+
+{% endblock content %}
+
+<!-- link your js file here -->
+{% block javascript %}
+<script src="../../static/home/javascript/profile_all.js" ></script>
+{% endblock javascript %}

@@ -1,0 +1,46 @@
+{% extends 'home/base.html' %}
+
+<!-- Link your custom css file here -->
+{% block mycss%}
+
+<link rel="stylesheet" href="../../static/home/css/Index.css">
+
+{% endblock mycss%}
+
+<!-- title name -->
+{% block title %}
+
+<title>Index page</title>
+
+{% endblock title %}
+
+<!-- write your code hare -->
+{% block content %}
+<div class="row">
+    <div class="col-sm-8 border - border-danger ">
+        <h1>main</h1>
+
+    </div>
+
+    <div class="col-sm-4 border - border-warning">
+        <h1>side</h1>
+    </div>
+
+</div>
+
+
+{% endblock content %}
+
+<!-- link your js file here -->
+{% block javascript %}
+
+<script src="../../static/home/javascript/index.js"></script>
+<script>
+    
+    window.addEventListener('load', function(){
+        home_page_load()
+    })
+   
+</script>
+
+{% endblock javascript %}

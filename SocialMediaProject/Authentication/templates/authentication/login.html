@@ -1,0 +1,47 @@
+{% extends 'authentication/base.html' %}
+
+<!--link your css file here -->
+{% block mycss%}
+
+<link rel="stylesheet" href="../../static/authentication/css/login.css">
+{% endblock mycss%}
+
+<!-- write your titale -->
+{% block title %}
+
+<title>Hello, world!</title>
+
+{% endblock title %}
+
+
+<!-- write your all content -->
+{% block content %}
+
+<div class="container mt-3">
+    <h2>Login form</h2>
+    <form action="/action_page.php">
+        <div class="mb-3 mt-3">
+            <label for="mobile">Mobile:</label>
+            <input type="number" class="form-control" id="mobile" placeholder="Enter Mobile Numbar" name="mobile">
+            <small id="error_mobile" class="text-danger"></small>
+        </div>
+        <div class="mb-3">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+            <small id="error_password" class="text-danger"></small>
+        </div>
+        
+        <button type="button" class="btn btn-primary" id="btn">Submit</button>
+    </form>
+    <a href="http://127.0.0.1:8000/auth/signup/">Signup</a>
+</div>
+
+{% endblock content %}
+
+
+<!-- link your javascript file hare  -->
+{% block javascript %}
+
+<script src="../../static/authentication/javascript/login.js"></script>
+
+{% endblock javascript %}

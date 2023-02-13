@@ -1,0 +1,70 @@
+{% extends 'authentication/base.html' %}
+
+<!--link your css file here -->
+{% block mycss%}
+
+<link rel="stylesheet" href="../../static/authentication/css/signup.css">
+
+{% endblock mycss%}
+
+<!-- write your titale -->
+{% block title %}
+
+<title>signup</title>
+
+{% endblock title %}
+
+
+<!-- write your all content -->
+{% block content %}
+<div class="container mt-3">
+    <h2>Signup Form</h2>
+    <form action="#">
+        <div class="mb-3 mt-3">
+            <label for="name">* Name:</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+            <small id="error_name" class="text-danger"></small>
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="user-name">* User Name:</label>
+            <input type="text" class="form-control" id="user_name" placeholder="Enter Mobile Numbar" name="user-name">
+            <small id="error_uname" class="text-danger"></small>
+
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="mobile">* Mobile:</label>
+            <input type="number" class="form-control" id="mobile" placeholder="Enter Mobile Numbar" name="mobile">
+            <small id="error_mobile" class="text-danger"></small>
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="email">* Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+            <small id="error_email" class="text-danger"></small>
+        </div>
+        <div class="mb-3">
+            <label for="pwd">* Password:</label>
+            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+            <small id="error_password" class="text-danger"></small>
+        </div>
+        <div class="mb-3">
+            <label for="pwd">* Conform Password:</label>
+            <input type="password" class="form-control" id="cpwd" placeholder="Re-Enter password" name="cpswd">
+            <small id="error_cpassword" class="text-danger"></small>
+        </div>
+        <div class="form-check mb-3">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="remember"> Term and Condition
+            </label>
+        </div>
+
+        <button type="button" class="btn btn-primary" id="btn">Submit</button>
+    </form>
+</div>
+
+{% endblock content %}
+
+
+<!-- link your javascript file hare  -->
+{% block javascript %}
+<script src="../../static/authentication/javascript/signup.js"></script>
+{% endblock javascript %}
