@@ -16,8 +16,35 @@
 
 <!-- write your code hare -->
 {% block content %}
-<h1>search page </h1>
-<button id="btn" >click</button>
+
+<div class=" border - border-warning">
+    <div class="row">
+        <div class="col-sm-3">
+
+        </div>
+        <div class="col-sm-6">
+            <div class="input-group rounded" >
+                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" style="width: 50%;" id="search_box" />
+                <span class="input-group-text border-0" id="search-addon">
+                  <i class="fas fa-search"></i>
+                </span>
+              </div>
+
+        </div>
+        <div class="col-sm-3">
+
+        </div>
+
+    </div>
+<!-- <input type="text"> -->
+<!-- <button id="btn">click</button> -->
+</div >
+<div class=" border - border-danger d-flex flex-wrap" id="search_result_div">
+
+    <!-- <h1>search result</h1> -->
+
+</div>
+
 {% endblock content %}
 
 <!-- link your js file here -->

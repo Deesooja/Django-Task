@@ -10,12 +10,12 @@ class MyCustomUserAdmin(BaseUserAdmin):
   # These override the definitions on the base CustomUser
   # that reference specific fields on auth.User.
 #   latitute=models.FloatField(null=True)
-  list_display = ('id', 'is_admin','is_active','is_superuser','is_staff','email', 'name', 'user_name', 'mobile' ,'term_conditions', 'profile_image' ,'address','pin_code', 'password','created_at','updated_at')
+  list_display = ('id', 'is_admin','is_active','is_superuser','email', 'name', 'user_name', 'mobile' ,'term_conditions', 'profile_image' ,'address','pin_code', 'password','created_at','updated_at')
   list_filter = ('is_admin',)
   fieldsets = (
       ('User Credentials', {'fields': ('email', 'password')}),
-      ('Personal info', {'fields': ('name','mobile','address','pin_code','term_conditions')}),
-      ('Permissions', {'fields': ('is_admin','is_active','is_staff')}),
+      ('Personal info', {'fields': ('name','mobile','address','pin_code','profile_image','term_conditions')}),
+      ('Permissions', {'fields': ('is_admin','is_active')}),
   )
   # add_fieldsets is not a standard ModelAdmin attribute. UserModelAdmin
   # overrides get_fieldsets to use this attribute when creating a user.

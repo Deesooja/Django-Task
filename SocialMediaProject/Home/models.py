@@ -14,7 +14,7 @@ class CustomUser(AbstractBaseUser,PermissionsMixin):
   user_name = models.CharField(max_length=200,unique=True)
   mobile=models.CharField(max_length=12,unique=True)
   term_conditions = models.BooleanField()
-  profile_image=models.FileField(upload_to='user_profile_image/',null=True)
+  profile_image=models.FileField(upload_to='user_profile_image/',null=True,default=None)
   address=models.CharField(max_length=200,null=True)
   pin_code=models.CharField(max_length=200,null=True)
   is_active = models.BooleanField(default=True)
