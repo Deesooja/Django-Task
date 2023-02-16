@@ -34,38 +34,12 @@ document.getElementById('search_box').addEventListener("keyup", function () {
         icon_div = document.createElement("div")
         icon_div.id = "icon_div_id"
 
-
-        // if (result.friend) {
-
-        // let view_icon = document.createElement("i");
-        // view_icon.className = "fas fa-eye fa-2x text-danger";
-        // view_icon.id = "view_btn";
-        // view_icon.value = result.user_id;
-
-        // // view_icon.addEventListener("click", function () {
-        // //     cart_delete_fun(this.value)
-        // // })
-
-        // var link = document.createElement("a")
-        // link.href = "http://127.0.0.1:8000/profile/?user_id=" + result.user_id
-
-        // let add_friend = document.createElement("i");
-        // add_friend.className = 'fas fa-user-friends fa-2x',
-        // add_friend.style.color = '#c1ac25';
-        // add_friend.id = "add_friend_btn";
-        // add_friend.value = result.user_id;
-        // add_friend.innerHTML = "+"
-
-        // } else {
-
         let view_icon = document.createElement("i");
         view_icon.className = "fas fa-eye fa-2x text-danger";
         view_icon.id = "view_btn";
         view_icon.value = result.user_id;
 
-        // view_icon.addEventListener("click", function () {
-        //     cart_delete_fun(this.value)
-        // })
+        
 
         var link = document.createElement("a")
         if (result.friend) {
@@ -96,15 +70,6 @@ document.getElementById('search_box').addEventListener("keyup", function () {
         already_friend_request_send.addEventListener("click", function () {
             already_friend_request_send_fun(this.value)
         })
-
-
-
-        // let add_friend = document.createElement("i");
-        // add_friend.className = 'fas fa-user-friends fa-2x',
-        //     add_friend.style.color = '#c1ac25';
-        // add_friend.id = "add_friend_btn";
-        // add_friend.value = result.user_id;
-        // add_friend.innerHTML = "+"
 
         link.append(view_icon)
         if (result.friend) {

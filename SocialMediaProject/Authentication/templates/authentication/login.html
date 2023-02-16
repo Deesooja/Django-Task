@@ -18,25 +18,42 @@
 {% block content %}
 
 <div class="container mt-3">
-    <h1 class="text-danger" id="error_msg_from_backendside"> </h1>
-    <h2>Login form</h2>
-    <form action="/action_page.php">
-        <div class="mb-3 mt-3">
-            <label for="mobile">Mobile:</label>
-            <input type="number" class="form-control" id="mobile" placeholder="Enter Mobile Numbar" name="mobile">
-            <small id="error_mobile" class="text-danger"></small>
-        </div>
-        <div class="mb-3">
-            <label for="pwd">Password:</label>
-            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
-            <small id="error_password" class="text-danger"></small>
-        </div>
-        
-        <button type="button" class="btn btn-primary" id="btn">Submit</button>
-    </form>
-    <div id="goto_signup" >
+    <div class="row">
+        <div class="col-sm-4">
 
-        <a href="http://127.0.0.1:8000/auth/signup/">Signup</a>
+        </div>
+
+        <div class="col-sm-4 border - border-primary ">
+            <!-- <h1>Social Media</h1> -->
+            <h1 class="text-danger" id="error_msg_from_backendside"> </h1>
+            <h2>Login form</h2>
+            <form action="#">
+                <div class="mb-3 mt-3">
+                    <label for="mobile">Mobile:</label>
+                    <input type="number" class="form-control" id="mobile" placeholder="Enter Mobile Numbar"
+                        name="mobile">
+                    <small id="error_mobile" class="text-danger"></small>
+                </div>
+                <div class="mb-3">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+                    <small id="error_password" class="text-danger"></small>
+                </div>
+
+                <button type="button" class="btn btn-primary" id="btn">Login</button>
+
+            </form>
+
+            <div id="goto_signup" class=" mb-3 d-flex justify-content-center ">
+
+                <a href="http://127.0.0.1:8000/auth/signup/"> <button class="btn btn-primary"> Signup </button> </a>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-sm-4">
     </div>
 </div>
 

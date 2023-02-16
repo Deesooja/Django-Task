@@ -17,7 +17,7 @@
 
 <!-- write your all content -->
 {% block content %}
-<div class="container mt-3">
+<div class="container mt-3 border - border-primary">
     <h1 class="text-danger" id="error_msg_from_backendside"> </h1>
     <h2>Signup Form</h2>
     <form action="#">
@@ -54,16 +54,16 @@
         </div>
         <div class="form-check mb-3">
             <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" name="remember"> Term and Condition
+                <!-- <input class="form-check-input" type="checkbox" name="remember"> Term and Condition -->
             </label>
         </div>
 
-        <button type="button" class="btn btn-primary" id="btn">Submit</button>
+        <button type="button" class="btn btn-primary" id="btn">Signup</button>
     </form>
     
-    <div id="goto_signup">
+    <div id="goto_signup" class="d-flex justify-content-center">
 
-        <a href="http://127.0.0.1:8000/auth/login/">Login</a>
+        <a href="http://127.0.0.1:8000/auth/login/"><button class="btn btn-primary" >Login</button></a>
     </div>
 </div>
 
