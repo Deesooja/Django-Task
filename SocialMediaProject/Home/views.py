@@ -46,7 +46,8 @@ class IndexView(View):
                 for post_obj in Post.objects.all().order_by('-id'):
                     # print(post_obj)
 
-                    if Friend.objects.filter(user=request.user, friend=post_obj.user).exists():
+
+                    if Friend.objects.filter(user=request.user, friend=post_obj.user).exists() or post_obj.user==request.user :
                         # print('inside the if ', post_obj)
 
                         # -------posted by Dict----------
@@ -142,60 +143,70 @@ class SearchView(View):
             rest_user_list = []
             rest_user_dict = {}
 
-            key = request.GET.get("key")
-            if CustomUser.objects.filter(Q(name__icontains=key) | Q(email__icontains=key) | Q(mobile__icontains=key)).exists():
+            key = request.GET.get("key",None)
+            if key:
+                print("value")
+            else:
+                print("not value")
+            print("key",key)
+            if key:
+                if CustomUser.objects.filter(Q(name__icontains=key) | Q(email__icontains=key) | Q(mobile__icontains=key)).exists():
 
-                for user_obj in CustomUser.objects.filter(Q(name__icontains=key) | Q(email__icontains=key) | Q(mobile__icontains=key)):
-                    if request.user == user_obj:
-                        continue
+                    for user_obj in CustomUser.objects.filter(Q(name__icontains=key) | Q(email__icontains=key) | Q(mobile__icontains=key)):
+                        if request.user == user_obj:
+                            continue
 
-                    if Friend.objects.filter(user=request.user, friend=user_obj):
+                        if Friend.objects.filter(user=request.user, friend=user_obj) or Friend.objects.filter(user=user_obj, friend=request.user) :
 
-                        friend_dict['user_id'] = user_obj.id
-                        friend_dict['name'] = user_obj.name
-                        # friend_dict['image'] = user_obj.profile_image.url if user_obj.profile_image.name else None
-                        friend_dict['image'] = get_user_url(user_obj)
-                        friend_dict['friend'] = True
-                        friend_dict['request'] = False
-                        friend_dict['blocked'] = False
+                            friend_dict['user_id'] = user_obj.id
+                            friend_dict['name'] = user_obj.name
+                            # friend_dict['image'] = user_obj.profile_image.url if user_obj.profile_image.name else None
+                            friend_dict['image'] = get_user_url(user_obj)
+                            friend_dict['friend'] = True
+                            friend_dict['request'] = False
+                            friend_dict['blocked'] = False
 
-                        friend_list.append(friend_dict)
-                        friend_dict = {}
-                    else:
-
-                        rest_user_dict['user_id'] = user_obj.id
-                        rest_user_dict['name'] = user_obj.name
-                        # rest_user_dict['image'] = user_obj.profile_image.url if user_obj.profile_image.name else None
-                        rest_user_dict['image'] = get_user_url(user_obj)
-                        rest_user_dict['friend'] = False
-
-                        if FriendRequest.objects.filter(sender=request.user, resiver=user_obj, action=False, blocked=False, cancel_by_sender=False).exists():
-
-                            rest_user_dict['request'] = True
-
+                            friend_list.append(friend_dict)
+                            friend_dict = {}
                         else:
-                            rest_user_dict['request'] = False
 
-                        if FriendRequest.objects.filter(sender=request.user, blocked=True).exists():
+                            rest_user_dict['user_id'] = user_obj.id
+                            rest_user_dict['name'] = user_obj.name
+                            # rest_user_dict['image'] = user_obj.profile_image.url if user_obj.profile_image.name else None
+                            rest_user_dict['image'] = get_user_url(user_obj)
+                            rest_user_dict['friend'] = False
 
-                            rest_user_dict['blocked'] = True
-                        else:
-                            rest_user_dict['blocked'] = False
+                            if FriendRequest.objects.filter(sender=request.user, resiver=user_obj, action=False, blocked=False, cancel_by_sender=False).exists():
 
-                        rest_user_list.append(rest_user_dict)
-                        rest_user_dict = {}
+                                rest_user_dict['request'] = True
 
-                search_result = friend_list+rest_user_list
+                            else:
+                                rest_user_dict['request'] = False
 
-                # print(search_result)
+                            if FriendRequest.objects.filter(sender=request.user, blocked=True).exists():
 
-                context["status"] = 200
-                context["massage"] = "ok"
-                context["data"] = search_result
+                                rest_user_dict['blocked'] = True
+                            else:
+                                rest_user_dict['blocked'] = False
+
+                            rest_user_list.append(rest_user_dict)
+                            rest_user_dict = {}
+
+                    search_result = friend_list+rest_user_list
+
+                    # print(search_result)
+
+                    context["status"] = 200
+                    context["massage"] = "ok"
+                    context["data"] = search_result
+                    return JsonResponse(context)
+
+                context['status'] = 401
+                context['massage'] = "User Not Found"
+                context['data'] = []
                 return JsonResponse(context)
-
             context['status'] = 401
-            context['massage'] = "User Not Found"
+            context['massage'] = "Key Is None"
             context['data'] = []
             return JsonResponse(context)
 
@@ -463,11 +474,25 @@ class AllFriendsView(View):
         return JsonResponse(data)
 
     def delete(self, request, *args, **kwargs):
-        # handle DELETE requests
-        data = {
-            'message': 'This is a DELETE request'
-        }
-        return JsonResponse(data)
+        context={}
+        
+        id=kwargs.get("id")
+
+        friend_obj=Friend.objects.get(id=id)
+        deteted_data=friend_obj.delete()
+
+        print(deteted_data)
+        if deteted_data:
+
+            context["status"] = 204
+            context["massage"] = 'Unfriend  done'
+            context["data"] = []
+            return JsonResponse(context)
+
+        context["status"] = 401
+        context["massage"] = 'Unfriend  not done'
+        context["data"] = []
+        return JsonResponse(context)
 
 
 @method_decorator(login_required(login_url="/auth/login/"), name='dispatch')
@@ -703,6 +728,7 @@ class ProfileView(View):
 
             updated_data = CustomUser.objects.filter(id=user_id).update(
                 name=name, user_name=user_name, mobile=mobile, email=email)
+
             if updated_data > 0:
 
                 context["status"] = 200
@@ -780,3 +806,91 @@ class ProfileView(View):
         #     'message': 'This is a DELETE request'
         # }
         # return JsonResponse(data)
+
+
+@method_decorator(login_required(login_url="/auth/login/"), name='dispatch')
+class CreatePostView(View):
+
+    def get(self, request, *args, **kwargs):
+
+        context = {}
+        try:
+
+            context = {'segment': 'index'}
+
+            
+                
+
+            html_template = loader.get_template('home/create_post.html')
+            # html_template = loader.get_template('signup.html')
+            return HttpResponse(html_template.render(context, request))
+
+        except template.TemplateDoesNotExist:
+
+            html_template = loader.get_template('home/404_page.html')
+            return HttpResponse(html_template.render(context, request))
+
+        except:
+
+            html_template = loader.get_template('home/500_page.html')
+            return HttpResponse(html_template.render(context, request))
+
+    def post(self, request, *args, **kwargs):
+        context = {}
+        # try:
+
+        if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
+            print(request.POST.get("text"))
+            massage=request.POST.get("text")
+            image_file = request.FILES.get('post_image')
+
+            if image_file is not None and massage  is not None:
+
+                new_post=Post.objects.create(user=request.user, image=image_file, text=massage)
+
+                if new_post.id :
+                    context["status"]=201
+                    context["massage"]="created"
+                    context["data"]=[]
+                    return JsonResponse(context)
+
+                context["status"]=401
+                context["massage"]="not created"
+                context["data"]=[]
+                return JsonResponse(context)
+                # print(image_file)
+       
+
+    def put(self, request, *args, **kwargs):
+        # handle PUT requests
+        data = {
+            'message': 'This is a PUT request'
+        }
+        return JsonResponse(data)
+
+    def patch(self, request, *args, **kwargs):
+        # handle PATCH requests
+        data = {
+            'message': 'This is a PATCH request'
+        }
+        return JsonResponse(data)
+
+    def delete(self, request, *args, **kwargs):
+        context = {}
+
+        print(kwargs.get("id"))
+        post_id = kwargs.get("id")
+        post_obj = Post.objects.get(id=post_id)
+
+        detete_info = post_obj.delete()
+
+        if detete_info:
+            context["status"] = 204
+            context["massage"] = 'Post Deleted'
+            context["data"] = []
+            return JsonResponse(context)
+
+        context["status"] = 401
+        context["massage"] = 'Post not  Deleted'
+        context["data"] = []
+        return JsonResponse(context)

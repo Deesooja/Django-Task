@@ -16,9 +16,9 @@
 
 <!-- write your code hare -->
 {% block content %}
-<div class=" border - border-danger">
+<div class=" ">
     <div class="row">
-        <div class="col-sm-4 border - border-danger">
+        <div class="col-sm-4 ">
             {% if user_check %}
 
             <div class="container mt-3">
@@ -61,9 +61,9 @@
 
         </div>
 
-        <div class="col-sm-4 border - border-danger d-flex " id="profile_user_info_div">
+        <div class="col-sm-4  d-flex " id="profile_user_info_div">
 
-            <div class="card" style="width: 25rem;">
+            <div class="card border - border-danger" style="width: 25rem;">
 
                 <img class="card-img-top" src="{{user.profile_image.url}}" alt="Card image cap" id="cart_profile_image">
                 <div class="card-body">
@@ -106,7 +106,7 @@
 
         </div>
 
-        <div class="col-sm-4 border - border-danger">
+        <div class="col-sm-4 ">
             <div class="chip_left">
                 <h1 style="padding: 10px">Post</h1>
 
@@ -119,10 +119,10 @@
             <div class="chip_left">
                 <h1 style="padding: 10px">Friends </h1>
                 {% if user_check %}
-                <div>
+                <!-- <div>
                     <i class=' fas fa-eye fa-2x  mt-4' id="send" onclick="view_all_friend(this.id )"
                         style="color: rgb(115, 220, 71);">View</i>
-                </div>
+                </div> -->
                 {% endif %}
 
 
@@ -153,33 +153,37 @@
     </div>
 
 </div>
+<div class="border - border-primary">
+    <h1>{{user.name}} Posts</h1>
 
-<div class="border - border-primary d-flex flex-wrap">
+    <div class=" d-flex flex-wrap">
 
-    {% for post_data in posted_data %}
 
-    <div class="card mt-3 ml-2" style="width: 20rem;" id="cart_main_div">
-        <img class="card-img-top" src={{post_data.image.url}} alt="Card image cap">
-        <div class="card-body">
-            <input type="hidden" id="post_id_{{post_data.id}}" value="{{post_data.id}}">
-            <!-- <h5 class="card-title"> j </h5> -->
-            <p>{{post_data.text}}</p>
+        {% for post_data in posted_data %}
 
-            <div class="d-flex justify-content-between" id="post_delete_div">
-                {% if user_check %}
-                <i class=' fas fa-trash-alt text-danger' id="delete" value="{{post_data.id}}"
-                    onclick="post_delete(this.id,this.value )"></i>
-                {% endif %}
+        <div class="card mt-3 ml-5 border - border-primary" style="width: 20rem;" id="cart_main_div">
+            <img class="card-img-top" src={{post_data.image.url}} alt="Card image cap">
+            <div class="card-body">
+                <input type="hidden" id="post_id_{{post_data.id}}" value="{{post_data.id}}">
+                <!-- <h5 class="card-title"> j </h5> -->
+                <p>{{post_data.text}}</p>
 
-                <h5 style="border: 1px solid rgb(82, 235, 6);">{{post_data.created_at}}</h5>
+                <div class="d-flex justify-content-between" id="post_delete_div">
+                    {% if user_check %}
+                    <i class=' fas fa-trash-alt text-danger' id="delete" value="{{post_data.id}}"
+                        onclick="post_delete(this.id,this.value )"></i>
+                    {% endif %}
+
+                    <h5 style="border: 1px solid rgb(82, 235, 6);">{{post_data.created_at}}</h5>
+                </div>
+
             </div>
 
         </div>
+        {% endfor %}
+
 
     </div>
-    {% endfor %}
-
-
 </div>
 
 {% endblock content %}

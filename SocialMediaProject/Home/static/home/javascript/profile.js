@@ -105,7 +105,7 @@ function show_file_name(id) {
     console.log('file', document.getElementById(id).files[0].name)
     console.log('value', document.getElementById(id).value)
 
-    alert('image upload')
+    // alert('image upload')
 }
 
 
@@ -157,36 +157,34 @@ function profile_image_upload(id) {
 function post_delete(id) {
 
     document.getElementById(id).innerHTML="...."
+
     var parant_element = document.getElementById(id).parentElement.parentElement
 
     var post_id = parant_element.childNodes[0].nextElementSibling.value
 
-    // document.getElementById(id).parentElement.parentElement.parentElement.remove()
+
+    fetch('http://127.0.0.1:8000/profile/' + post_id + "/", {
+
+        method: 'DELETE',
+
+        headers: {
+            'Content-Type': 'application / json',
+            'X-Requested-With': 'XMLHttpRequest-1',
+            "X-CSRFToken": document.getElementById("csrf_token").value
+        },
+
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
 
 
-    // fetch('http://127.0.0.1:8000/profile/' + post_id + "/", {
+            if (data.status == 204) {
+                document.getElementById(id).parentElement.parentElement.parentElement.remove()
 
-    //     method: 'DELETE',
-
-    //     headers: {
-    //         // 'Content-Type': 'application / json',
-    //         'X-Requested-With': 'XMLHttpRequest-1',
-    //         "X-CSRFToken": document.getElementById("csrf_token").value
-    //     },
-
-    // })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         console.log(data)
-
-
-    //         if (data.status == 204) {
-    //             document.getElementById(id).parentElement.parentElement.parentElement.remove()
-
-
-    //         }
-    //     })
-    //     .catch(error => console.error(error));
+            }
+        })
+        .catch(error => console.error(error));
 
     // parant_element = document.getElementById(id).parentElement.parentElement
     // console.log(parant_element.childNodes[0].nextElementSibling.value)

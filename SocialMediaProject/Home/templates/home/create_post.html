@@ -1,0 +1,57 @@
+{% extends 'home/base.html' %}
+
+
+<!-- Link your custom css file here -->
+{% block mycss%}
+<link rel="stylesheet" href="../../static/home/css/create_post.css">
+
+{% endblock mycss%}
+
+<!-- title name -->
+{% block title %}
+
+<title>massage</title>
+
+{% endblock title %}
+
+<!-- write your code hare -->
+{% block content %}
+<div class="row">
+    <div class="col-sm-4">
+
+    </div>
+    <div class="col-sm-3 mt-5 border - border-danger">
+        <small class="text-danger" id="error"> </small>
+
+        <h2>Create Your Post</h2>
+
+        <form action="#" id="post_form">
+            <div class="mb-3 mt-3">
+                <input type="text" class="form-control" id="yout_text" placeholder="Write your massage" name="text">
+                <small id="error_mobile" class="text-danger"></small>
+            </div>
+            <div class="mb-3">
+                
+                <input type="file" class="form-control" id="post_image" placeholder="Enter password" name="post_image">
+                <small id="error_password" class="text-danger"></small>
+            </div>
+
+            <button type="button" class="btn btn-primary" id="post_btn" onclick="post(this.id)">Post</button>
+        </form>
+        <h1 class="text-danger" id="post_massage"></h1>
+
+
+    </div>
+    <div class="col-sm-5">
+
+    </div>
+
+
+</div>
+
+{% endblock content %}
+
+<!-- link your js file here -->
+{% block javascript %}
+<script src="../../static/home/javascript/create_post.js"></script>
+{% endblock javascript %}

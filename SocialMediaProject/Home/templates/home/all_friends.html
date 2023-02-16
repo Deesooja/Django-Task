@@ -34,14 +34,15 @@
 
 <div class="row">
     <div class="col-sm-4">
-        <h1>left</h1>
+        <!-- <h1>left</h1> -->
 
     </div>
 
     <div class="col-sm-4">
+        <h1>All Friends</h1>
 
         {% for friend in all_friends %}
-        <div class="card mt-3 ml-2" style="width: 20rem;" id="cart_main_div">
+        <div class="card mt-3 ml-2 border - border-primary" style="width: 20rem;" id="cart_main_div">
 
             {% if friend.friend.profile_image.url %}
             <img class="card-img-top" src="{{friend.friend.profile_image.url}}" alt="Card image cap">
@@ -76,7 +77,7 @@
 
     </div>
     <div class="col-sm-4">
-        <h1>right</h1>
+        <!-- <h1>right</h1> -->
 
     </div>
 

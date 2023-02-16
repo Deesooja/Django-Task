@@ -19,19 +19,19 @@
 {% block content %}
 
 
-<div class=" border - border-danger">
+<div class=" ">
     <div class="row">
-        <div class="col-sm-4 border - border-danger">
+        <div class="col-sm-4 ">
 
-            <h1>Left</h1>
+            <!-- <h1>Left</h1> -->
 
         </div>
 
-        <div class="col-sm-4 border - border-danger d-flex " id="profile_user_info_div">
+        <div class="col-sm-4  d-flex " id="profile_user_info_div">
 
             <div class="card" style="width: 20rem;">
                 <img class="card-img-top"
-                    src="https://thecustombakers-s3-bucket.s3.amazonaws.com/user_profile_image/1675321104339_3.JPEG"
+                    src="{{user.profile_image.url}}"
                     alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"> {{user.name}} </h5>
@@ -57,7 +57,7 @@
 
         </div>
 
-        <div class="col-sm-4 border - border-danger">
+        <div class="col-sm-4 ">
             <div class="chip_left">
                 <h1 style="padding: 10px">Post</h1>
 
@@ -96,9 +96,9 @@
 
 </div>
 
-<div class="border - border-primary">
+<div class="">
 
-    <h1>post</h1>
+    <h1 class="ml-10">After Accept Friend Request You Able to see their Post</h1>
 
 </div>
 
