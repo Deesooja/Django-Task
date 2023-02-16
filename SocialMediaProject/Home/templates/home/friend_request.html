@@ -1,0 +1,70 @@
+{% extends 'home/base.html' %}
+
+
+<!-- Link your custom css file here -->
+{% block mycss%}
+<link rel="stylesheet" href="../../static/home/css/friend_request.css">
+
+{% endblock mycss%}
+
+<!-- title name -->
+{% block title %}
+
+<title>massage</title>
+
+{% endblock title %}
+
+<!-- write your code hare -->
+{% block content %}
+<div class="row">
+    <div class="col-sm-4">
+        <h1>left</h1>
+    </div>
+
+    <div class="col-sm-3">
+        {% for friend_request in friend_request %}
+        <div class="card mt-3 ml-2" style="width: 20rem;" id="cart_main_div">
+            {% if friend_request.sender.profile_image.url %}
+            <img class="card-img-top" src="{{friend_request.sender.profile_image.url}}" alt="Card image cap">
+            {% else%}
+            <img class="card-img-top"
+                src="http://res.cloudinary.com/dq6yi7y9s/image/upload/c_fill,w_400/hvdj3kkekabytnlcfzrl"
+                alt="Card image cap">
+
+            {% endif %}
+            <div class="card-body">
+                <input type="hidden" id="post_id_{{friend_request.id}}" value="{{friend_request.id}}">
+                <!-- <h5 class="card-title"> j </h5> -->
+                <p>{{friend_request.sender.name}}</p>
+
+                <div class="d-flex justify-content-between" id="friend_request_action_div">
+
+                    <button  id="acceept" onclick="friend_request_accept(this.id)">Accept</button>
+
+                    <a href="http://127.0.0.1:8000/profile/?user_id={{friend_request.sender.id}}"><button>Profile</button></a>
+
+                    <button id="reject" onclick="friend_request_reject(this.id)"> Reject</button>
+                </div>
+
+            </div>
+
+        </div>
+        {% endfor %}
+
+
+    </div>
+    <div class="col-sm-5">
+        <h1>right</h1>
+    </div>
+
+</div>
+
+<!-- <h1>Friend request/h1>
+<button id="btn" >click</button> -->
+
+{% endblock content %}
+
+<!-- link your js file here -->
+{% block javascript %}
+<script src="../../static/home/javascript/friend_request.js"></script>
+{% endblock javascript %}

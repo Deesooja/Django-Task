@@ -133,7 +133,7 @@ document.getElementById('search_box').addEventListener("keyup", function () {
     // ------------------------------------------On Click Send Friend Requst------------------------
 
     function add_friend_fun(user_id) {
-        
+
         fetch('http://127.0.0.1:8000/search/', {
 
             method: "POST",
@@ -148,7 +148,7 @@ document.getElementById('search_box').addEventListener("keyup", function () {
         })
             .then(response => response.json())
             .then(data => {
-                if (data.status == 200) {
+                if (data.status == 201) {
                     console.log(data)
 
                     document.getElementById('add_friend_btn_' + user_id).innerHTML = "Send..."
@@ -240,6 +240,8 @@ document.getElementById('search_box').addEventListener("keyup", function () {
                 data.data.map(result)
 
 
+            }else{
+                document.getElementById("search_result_div").innerHTML = ""
             }
 
         })

@@ -1,3 +1,28 @@
-h1{
-    color: rgb(0, 102, 128);
-}
+.chip {
+    display: flex;
+    border: 1px solid rgb(255, 242, 0);
+   }
+   
+   .chip_left {
+     margin-top: 10px;
+     display: flex;
+     justify-content: space-between;
+     width: 80%;
+     border-radius:  50px;
+    /* border: 1px solid red; */
+    background-color: beige;
+    }
+    
+    .chip_right {
+     /* border: 1px solid red; */
+     width: 80px;
+     height: 80px;
+     border-radius:  30px;
+    background-color: rgb(225, 225, 34);
+ 
+    }
+/* 
+.post_delete_div{
+    display: flex;
+    justify-content: space-evenly;
+} */

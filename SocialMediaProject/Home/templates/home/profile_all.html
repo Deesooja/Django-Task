@@ -5,7 +5,7 @@
 <!-- Link your custom css file here -->
 {% block mycss%}
 
-<link rel="stylesheet" href="../../static/home/css/profile.css">
+<link rel="stylesheet" href="../../static/home/css/profile_all.css">
 {% endblock mycss%}
 
 <!-- title name -->
@@ -17,12 +17,95 @@
 
 <!-- write your code hare -->
 {% block content %}
-<h1>Profile all</h1>
-<button id="btn" >click</button>
+
+
+<div class=" border - border-danger">
+    <div class="row">
+        <div class="col-sm-4 border - border-danger">
+
+            <h1>Left</h1>
+
+        </div>
+
+        <div class="col-sm-4 border - border-danger d-flex " id="profile_user_info_div">
+
+            <div class="card" style="width: 20rem;">
+                <img class="card-img-top"
+                    src="https://thecustombakers-s3-bucket.s3.amazonaws.com/user_profile_image/1675321104339_3.JPEG"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"> {{user.name}} </h5>
+                    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's
+                        content.</p> -->
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                    <input type="hidden" id="user_id_on_profile_page" value="{{user.id}}">
+                    {% if request %}
+                    <i class='fas fa-user-friends fa-2x'   id="cancel" 
+                        onclick="friend_request_send_cancel(this.id , )">Send...</i>
+                    
+                    {% else %}
+
+                    <i class='fas fa-user-friends fa-2x' style="color:#c1ac25 " id="send"
+                        onclick="friend_request_send_cancel(this.id , )">+</i>
+                    
+
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-sm-4 border - border-danger">
+            <div class="chip_left">
+                <h1 style="padding: 10px">Post</h1>
+
+                <div class="chip_right">
+                    <h1 style="padding: 10px"> {{post}} </h1>
+
+                </div>
+
+            </div>
+            <div class="chip_left">
+                <h1 style="padding: 10px">Friends </h1>
+
+                <div class="chip_right">
+                    <h1 style="padding: 10px"> {{friend}} </h1>
+
+                </div>
+
+            </div>
+            <div class="chip_left">
+                <h1 style="padding: 10px">{{user.user_name}} </h1>
+
+                <!-- <div class="chip_right">
+                        <h1 style="padding: 10px" >10</h1>
+    
+                    </div> -->
+
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+
+</div>
+
+<div class="border - border-primary">
+
+    <h1>post</h1>
+
+</div>
+
 
 {% endblock content %}
 
 <!-- link your js file here -->
 {% block javascript %}
-<script src="../../static/home/javascript/profile_all.js" ></script>
+<script src="../../static/home/javascript/profile_all.js"></script>
 {% endblock javascript %}

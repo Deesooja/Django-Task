@@ -81,10 +81,10 @@ document.getElementById('btn').addEventListener('click', function () {
                     console.log(data)
                     
                     window.location.href = "http://127.0.0.1:8000/auth/login/";
+                }else{
+                    document.getElementById('error_msg_from_backendside').innerHTML=data.massage
                 }
             })
-            
-                
             .catch(error => console.error(error));
 
 

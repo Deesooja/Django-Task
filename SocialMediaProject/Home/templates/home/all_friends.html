@@ -1,0 +1,88 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>notification page </h1>
+</body>
+</html> -->
+
+
+{% extends 'home/base.html' %}
+
+
+<!-- Link your custom css file here -->
+{% block mycss%}
+
+<link rel="stylesheet" href="../../static/home/css/all_friends.css">
+
+{% endblock mycss%}
+
+<!-- title name -->
+{% block title %}
+
+<title>notification</title>
+
+{% endblock title %}
+
+<!-- write your code hare -->
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-4">
+        <h1>left</h1>
+
+    </div>
+
+    <div class="col-sm-4">
+
+        {% for friend in all_friends %}
+        <div class="card mt-3 ml-2" style="width: 20rem;" id="cart_main_div">
+
+            {% if friend.friend.profile_image.url %}
+            <img class="card-img-top" src="{{friend.friend.profile_image.url}}" alt="Card image cap">
+            {% else%}
+            <img class="card-img-top"
+                src="http://res.cloudinary.com/dq6yi7y9s/image/upload/c_fill,w_400/hvdj3kkekabytnlcfzrl"
+                alt="Card image cap">
+
+            {% endif %}
+            <div class="card-body">
+                <input type="hidden" id="friend_id_{{friend_request.id}}" value="{{friend.id}}">
+                <!-- <h5 class="card-title"> j </h5> -->
+                <p>{{friend.friend.name}}</p>
+
+                <div class="d-flex justify-content-between" id="friend_request_action_div">
+
+                    <!-- <button id="acceept" onclick="friend_request_accept(this.id)">Accept</button> -->
+
+                    
+                    <a href="http://127.0.0.1:8000/profile/?user_id={{friend.friend.id}}"><button>Profile</button></a>
+
+                    <button id="reject" onclick="unfriend(this.id)"> Unfriend</button>
+                </div>
+
+            </div>
+
+
+        </div>
+        {% endfor %}
+
+
+
+    </div>
+    <div class="col-sm-4">
+        <h1>right</h1>
+
+    </div>
+
+    {% endblock content %}
+
+    <!-- link your js file here -->
+    {% block javascript %}
+    <script src="../../static/home/javascript/all_friends.js"></script>
+    {% endblock javascript %}

@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser , PermissionsMixin
 from Home.manager import CustomUserManager
+# from cloudinary.models import CloudinaryField
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -14,7 +16,7 @@ class CustomUser(AbstractBaseUser,PermissionsMixin):
   user_name = models.CharField(max_length=200,unique=True)
   mobile=models.CharField(max_length=12,unique=True)
   term_conditions = models.BooleanField()
-  profile_image=models.FileField(upload_to='user_profile_image/',null=True,default=None)
+  profile_image=CloudinaryField(null=True, blank=True)
   address=models.CharField(max_length=200,null=True)
   pin_code=models.CharField(max_length=200,null=True)
   is_active = models.BooleanField(default=True)
@@ -31,6 +33,8 @@ class CustomUser(AbstractBaseUser,PermissionsMixin):
 
   def __str__(self):
       return self.email
+#   def __str__(self):
+#         return f"({self.email})"
 
   def has_perm(self, perm, obj=None):
       "Does the user have a specific permission?"
@@ -61,12 +65,13 @@ class FriendRequest(models.Model):
     accept=models.BooleanField(default=False)
     atempt=models.IntegerField(default=1)
     blocked=models.BooleanField(default=False)
+    cancel_by_sender=models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
 class Post(models.Model):
     user=models.ForeignKey(CustomUser,on_delete=models.CASCADE)
-    image=models.FileField(upload_to="post_image")
+    image=CloudinaryField('image')
     text=models.CharField(max_length=500)
     for_all=models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)

@@ -18,6 +18,7 @@
 <!-- write your all content -->
 {% block content %}
 <div class="container mt-3">
+    <h1 class="text-danger" id="error_msg_from_backendside"> </h1>
     <h2>Signup Form</h2>
     <form action="#">
         <div class="mb-3 mt-3">
@@ -59,6 +60,11 @@
 
         <button type="button" class="btn btn-primary" id="btn">Submit</button>
     </form>
+    
+    <div id="goto_signup">
+
+        <a href="http://127.0.0.1:8000/auth/login/">Login</a>
+    </div>
 </div>
 
 {% endblock content %}

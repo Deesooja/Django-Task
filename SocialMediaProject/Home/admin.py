@@ -37,7 +37,7 @@ class FriendAdmin(admin.ModelAdmin):
 
 @admin.register(FriendRequest)
 class FriendRequestAdmin(admin.ModelAdmin):
-    list_display=['id','sender','resiver','action','accept','atempt','blocked']
+    list_display=['id','sender','resiver','action','accept','atempt','blocked','cancel_by_sender']
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):

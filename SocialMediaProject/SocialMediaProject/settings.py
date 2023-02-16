@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,8 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
     'Home',
     'Authentication',
+    # 'simple_cloudinary',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -84,7 +91,16 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql', 
+#         'NAME': 'djago_task',
+#         'USER': 'root',
+#         'PASSWORD': '',
+#         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+#         'PORT': '3306',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -135,10 +151,25 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_ACCESS_KEY_ID = 'AKIAWG22FSH6X7QNIXH7'
+# AWS_ACCESS_KEY_ID = 'AKIAWG22FSH6X7QNIXH7'
 
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'thecustombakers-s3-bucket'
-AWS_QUERYSTRING_AUTH = False
+# AWS_SECRET_ACCESS_KEY = 'dyDsALx6aDzMBOpNBDAjCRFWmrJRMPhJ67iOHdvI'
+# AWS_STORAGE_BUCKET_NAME = 'thecustombakers-s3-bucket'
+# AWS_QUERYSTRING_AUTH = False
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dq6yi7y9s',
+    'API_KEY': '727762525387421',
+    'API_SECRET': 'tPcHFItlrrCWvsLWBzY353EN6K0',
+    
+}
+cloudinary.config(
+    cloud_name=CLOUDINARY_STORAGE['CLOUD_NAME'],
+    api_key=CLOUDINARY_STORAGE['API_KEY'],
+    api_secret=CLOUDINARY_STORAGE['API_SECRET']
+)
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
