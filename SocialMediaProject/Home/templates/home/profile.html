@@ -162,7 +162,8 @@
         {% for post_data in posted_data %}
 
         <div class="card mt-3 ml-5 border - border-primary" style="width: 20rem;" id="cart_main_div">
-            <img class="card-img-top" src={{post_data.image.url}} alt="Card image cap">
+
+            <img class="card-img-top" style="width: 317px; height: 250px; padding: 2px;" src={{post_data.image.url}} alt="Card image cap">
             <div class="card-body">
                 <input type="hidden" id="post_id_{{post_data.id}}" value="{{post_data.id}}">
                 <!-- <h5 class="card-title"> j </h5> -->

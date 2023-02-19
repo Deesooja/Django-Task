@@ -199,14 +199,17 @@ class SearchView(View):
                     context["status"] = 200
                     context["massage"] = "ok"
                     context["data"] = search_result
+                    context["key"] = key
                     return JsonResponse(context)
 
                 context['status'] = 401
                 context['massage'] = "User Not Found"
                 context['data'] = []
+                context["key"] = key
                 return JsonResponse(context)
             context['status'] = 401
             context['massage'] = "Key Is None"
+            context["key"] = key
             context['data'] = []
             return JsonResponse(context)
 
