@@ -9,7 +9,7 @@
 <!-- write your titale -->
 {% block title %}
 
-<title>Hello, world!</title>
+<title>Social Media</title>
 
 {% endblock title %}
 
@@ -23,31 +23,36 @@
 
         </div>
 
-        <div class="col-sm-4 border - border-primary ">
+        <div class="col-sm-4 border - border-primary">
+            <h1 style="border-bottom: 2px solid gold;">Socal Media</h1>
             <!-- <h1>Social Media</h1> -->
             <h1 class="text-danger" id="error_msg_from_backendside"> </h1>
-            <h2>Login form</h2>
-            <form action="#">
-                <div class="mb-3 mt-3">
-                    <label for="mobile">Mobile:</label>
-                    <input type="number" class="form-control" id="mobile" placeholder="Enter Mobile Numbar"
-                        name="mobile">
-                    <small id="error_mobile" class="text-danger"></small>
+            <div class="">
+
+
+                <h2>Login form</h2>
+                <form action="#">
+                    <div class="mb-3 mt-3">
+                        <label for="mobile">Mobile:</label>
+                        <input type="number" class="form-control" id="mobile" placeholder="Enter Mobile Numbar"
+                            name="mobile">
+                        <small id="error_mobile" class="text-danger"></small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pwd">Password:</label>
+                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+                        <small id="error_password" class="text-danger"></small>
+                    </div>
+
+                    <button type="button" class="btn btn-primary" id="btn">Login</button>
+
+                </form>
+
+                <div id="goto_signup" class=" mb-3 d-flex justify-content-center ">
+
+                    <a href="http://15.207.107.243/auth/signup/"> <button class="btn btn-primary"> Signup </button> </a>
+
                 </div>
-                <div class="mb-3">
-                    <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
-                    <small id="error_password" class="text-danger"></small>
-                </div>
-
-                <button type="button" class="btn btn-primary" id="btn">Login</button>
-
-            </form>
-
-            <div id="goto_signup" class=" mb-3 d-flex justify-content-center ">
-
-                <a href="http://127.0.0.1:8000/auth/signup/"> <button class="btn btn-primary"> Signup </button> </a>
-
             </div>
 
         </div>

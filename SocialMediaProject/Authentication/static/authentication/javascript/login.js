@@ -20,7 +20,7 @@ document.getElementById('pwd').addEventListener('click', function () {
 
 document.getElementById('btn').addEventListener('click', function () {
 
-    // window.location.href = "http://127.0.0.1:8000";
+    // window.location.href = "http://15.207.107.243";
 
 
     var token = document.getElementById('csrf_token_id').value
@@ -36,7 +36,7 @@ document.getElementById('btn').addEventListener('click', function () {
 
     if (login_obj.mobile != "" && login_obj.password != "") {
 
-        fetch('http://127.0.0.1:8000/auth/login/', {
+        fetch('http://15.207.107.243/auth/login/', {
 
             method: 'POST',
 
@@ -55,7 +55,7 @@ document.getElementById('btn').addEventListener('click', function () {
                     
                     console.log(data)
 
-                    window.location.href = "http://127.0.0.1:8000";
+                    window.location.href = "http://15.207.107.243";
                 }else{
 
                     document.getElementById('error_msg_from_backendside').innerHTML=data.massage

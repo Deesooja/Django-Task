@@ -43,10 +43,10 @@ document.getElementById('search_box').addEventListener("keyup", function () {
 
         var link = document.createElement("a")
         if (result.friend) {
-            link.href = "http://127.0.0.1:8000/profile/?user_id=" + result.user_id
+            link.href = "http://15.207.107.243/profile/?user_id=" + result.user_id
         } else {
 
-            link.href = "http://127.0.0.1:8000/profile-all/?user_id=" + result.user_id
+            link.href = "http://15.207.107.243/profile-all/?user_id=" + result.user_id
         }
 
         var small = document.createElement("small")
@@ -116,7 +116,7 @@ document.getElementById('search_box').addEventListener("keyup", function () {
 
         if (id == ("add_friend_btn" + "_" + user_id)) {
 
-            fetch('http://127.0.0.1:8000/search/', {
+            fetch('http://15.207.107.243/search/', {
                 method: "POST",
 
                 headers: {
@@ -147,7 +147,7 @@ document.getElementById('search_box').addEventListener("keyup", function () {
 
         } else {
 
-            fetch('http://127.0.0.1:8000/search/', {
+            fetch('http://15.207.107.243/search/', {
 
                 method: "POST",
 
@@ -181,7 +181,7 @@ document.getElementById('search_box').addEventListener("keyup", function () {
     // ------------------------------------------Search Ajax---------------------------------------
 
     var key = document.getElementById('search_box').value
-    fetch('http://127.0.0.1:8000/search/?key=' + key, {
+    fetch('http://15.207.107.243/search/?key=' + key, {
         method: "GET",
 
         headers: {

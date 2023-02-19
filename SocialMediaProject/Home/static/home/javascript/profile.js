@@ -61,7 +61,7 @@ function personal_info(id) {
 
         } else {
 
-            fetch('http://127.0.0.1:8000/profile/', {
+            fetch('http://15.207.107.243/profile/', {
 
                 method: 'POST',
 
@@ -122,7 +122,7 @@ function profile_image_upload(id) {
 
         document.getElementById(id).innerHTML = "Uploading.."
 
-        fetch('http://127.0.0.1:8000/profile/', {
+        fetch('http://15.207.107.243/profile/', {
 
             method: 'POST',
 
@@ -163,7 +163,7 @@ function post_delete(id) {
     var post_id = parant_element.childNodes[0].nextElementSibling.value
 
 
-    fetch('http://127.0.0.1:8000/profile/' + post_id + "/", {
+    fetch('http://15.207.107.243/profile/' + post_id + "/", {
 
         method: 'DELETE',
 

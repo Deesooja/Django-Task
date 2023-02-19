@@ -2,7 +2,7 @@ function friend_request_accept(id) {
     request_id = document.getElementById(id).parentElement.parentElement.childNodes[0].nextSibling.value
     // document.getElementById(id).parentElement.parentElement.parentElement.remove()
 
-    fetch('http://127.0.0.1:8000/friend-request/', {
+    fetch('http://15.207.107.243/friend-request/', {
 
         method: 'POST',
 
@@ -32,7 +32,7 @@ function friend_request_reject(id) {
     request_id = document.getElementById(id).parentElement.parentElement.childNodes[0].nextSibling.value
     // document.getElementById(id).parentElement.parentElement.parentElement.remove()
 
-    fetch('http://127.0.0.1:8000/friend-request/', {
+    fetch('http://15.207.107.243/friend-request/', {
 
         method: 'POST',
 

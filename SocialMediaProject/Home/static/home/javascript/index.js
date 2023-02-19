@@ -22,6 +22,11 @@ function home_page_load() {
 
         cart_ship.append(cart_chip_img)
 
+        link=document.createElement("a")
+        link.href = "http://15.207.107.243/profile/?user_id=" + post.posted_by.id;
+
+        link.append(cart_ship)
+
 
 
         let cart = document.createElement("div");
@@ -41,7 +46,7 @@ function home_page_load() {
         text.textContent = post.post.text || "Some quick example text to build on the card title and make up the bulk of the card content";
 
         cart_body.append(text);
-        cart.append(cart_ship, cart_image, cart_body);
+        cart.append(link, cart_image, cart_body);
         master.append(cart);
 
 
@@ -73,7 +78,7 @@ function home_page_load() {
 
     }
 
-    fetch('http://127.0.0.1:8000/', {
+    fetch('http://15.207.107.243/', {
         method: "GET",
 
         headers: {

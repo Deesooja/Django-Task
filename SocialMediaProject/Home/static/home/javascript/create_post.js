@@ -10,7 +10,7 @@ function post(id) {
 
 
 
-        fetch('http://127.0.0.1:8000/create-post/', {
+        fetch('http://15.207.107.243/create-post/', {
 
             method: 'POST',
 
