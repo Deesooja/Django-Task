@@ -2,7 +2,7 @@ function unfriend(id) {
     friend_id = document.getElementById(id).parentElement.parentElement.childNodes[1].value
     document.getElementById(id).innerHTML="Proccing"
 
-    fetch('http://15.207.107.243/all-friends/'+ friend_id +"/", {
+    fetch('http://127.0.0.1:8000/all-friends/'+ friend_id +"/", {
 
         method: 'DELETE',
 

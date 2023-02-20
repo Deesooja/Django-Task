@@ -7,6 +7,7 @@ from django import template
 from django.template import loader
 from Home.models import *
 import json
+from django.conf import settings
 
 # Create your views here.
 
@@ -18,6 +19,8 @@ class SignupView(View):
         context = {}
         try:
             context = {'segment': 'index'}
+            context['base_url']=settings.BASE_URL
+            
 
             html_template = loader.get_template('authentication/signup.html')
             # html_template = loader.get_template('signup.html')
@@ -118,7 +121,9 @@ class LoginView(View):
 
         context = {}
         try:
-            context = {'segment': 'index'}
+            con1text = {'segment': 'index'}
+            context['base_url']=settings.BASE_URL
+            
 
             html_template = loader.get_template('authentication/login.html')
             # html_template = loader.get_template('signup.html')

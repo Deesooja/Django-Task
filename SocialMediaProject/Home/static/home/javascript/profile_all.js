@@ -18,7 +18,7 @@ function friend_request_send_cancel(id, user_id) {
 
     if (id == "send") {
 
-        fetch('http://15.207.107.243/profile-all/', {
+        fetch('http://127.0.0.1:8000/profile-all/', {
 
             method: "POST",
 
@@ -47,7 +47,7 @@ function friend_request_send_cancel(id, user_id) {
 
     } else {
 
-        fetch('http://15.207.107.243/profile-all/', {
+        fetch('http://127.0.0.1:8000/profile-all/', {
 
             method: "POST",
 

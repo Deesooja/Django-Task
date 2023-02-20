@@ -8,11 +8,11 @@ from django.template import loader
 from django import template
 from Home.models import *
 import json
+from django.conf import settings
 # from cloudinary.utils import cloudinary_url
 from Home.MyModule.get_url import get_post_url, get_user_url
 
 # Create your views here.
-
 
 @method_decorator(login_required(login_url="/auth/login/"), name='dispatch')
 class IndexView(View):
@@ -21,6 +21,7 @@ class IndexView(View):
 
         context = {}
         try:
+            context["base_url"]=settings.BASE_URL
             if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
 
                 # print(get_user_url(CustomUser.objects.get(id=1)))
@@ -435,9 +436,25 @@ class AllFriendsView(View):
             context = {}
         # try:
             context = {'segment': 'index'}
-            all_friends=Friend.objects.filter(user=request.user)
+            all_friends_search_user=Friend.objects.filter(user=request.user).order_by("-id")
+            context["all_friends_search_user"]=all_friends_search_user
 
-            context["all_friends"]=all_friends
+            all_friends_search_friend=Friend.objects.filter(friend=request.user).order_by("-id")
+            context["all_friends_search_friend"]=all_friends_search_friend
+
+
+            # if Friend.objects.filter(Q(user=request.user)|Q(friend=request.user)).exists():
+
+            #     for friends_obj in Friend.objects.filter(Q(user=request.user)|Q(friend=request.user)) :
+
+            #         if friends_obj.user == request.user :
+
+            #             context["all_friends"]=all_friends
+
+
+
+
+            # context["all_friends"]=all_friends
 
             html_template = loader.get_template('home/all_friends.html')
             # html_template = loader.get_template('signup.html')

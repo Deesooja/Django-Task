@@ -18,12 +18,15 @@ function home_page_load() {
         let cart_chip_img = document.createElement("img");
 
         cart_chip_img.src = post?.posted_by?.image || "https://mdbootstrap.com/img/Photos/Avatars/avatar-6.webp";
+        // cart_chip_img.src = post?.posted_by?.image || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc3-gnr9Bp7bEGQ7SA9x6dlSVH2lPua0TBkh3n_yqEfqeBGP9NzC9OijiJ2Sir8mq-IUs&usqp=CAU";
+
         cart_chip_img.alt = "Card image chip";
+        
 
         cart_ship.append(cart_chip_img)
 
         link=document.createElement("a")
-        link.href = "http://15.207.107.243/profile/?user_id=" + post.posted_by.id;
+        link.href = "http://127.0.0.1:8000/profile/?user_id=" + post.posted_by.id;
 
         link.append(cart_ship)
 
@@ -37,6 +40,7 @@ function home_page_load() {
         cart_image.className = "card-img-top border border-success";
         cart_image.src = post.post.image || "https://thecustombakers-s3-bucket.s3.amazonaws.com/ItemDefultImage63cfbacdef471present.jpg";
         cart_image.alt = "Card image cap";
+        cart_image.style.width ="671px" ;
 
         let cart_body = document.createElement("div");
         cart_body.className = "card-body";
@@ -65,7 +69,9 @@ function home_page_load() {
 
         let cart_chip_img = document.createElement("img");
 
-        cart_chip_img.src = user.image || "https://mdbootstrap.com/img/Photos/Avatars/avatar-6.webp";
+        // cart_chip_img.src = user.image || "https://mdbootstrap.com/img/Photos/Avatars/avatar-6.webp";
+        cart_chip_img.src = user.image || "https://t3.ftcdn.net/jpg/05/03/24/40/360_F_503244059_fRjgerSXBfOYZqTpei4oqyEpQrhbpOML.jpg";
+
         cart_chip_img.alt = "Card image chip";
 
         cart_ship.append(cart_chip_img)
@@ -78,7 +84,7 @@ function home_page_load() {
 
     }
 
-    fetch('http://15.207.107.243/', {
+    fetch('http://127.0.0.1:8000/', {
         method: "GET",
 
         headers: {
@@ -94,6 +100,7 @@ function home_page_load() {
                 console.log(data);
 
                 console.log(data.data.post)
+                document.getElementById("base_url").value=data.base_url
 
                 data.data.post.map(post_load)
 

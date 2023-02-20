@@ -17,8 +17,9 @@
 
 <!-- write your all content -->
 {% block content %}
+<input type="hidden" id="base_url" value="{{ base_url }}">
 <div class="container mt-3 border - border-primary">
-    <h1 class="text-body" style="border-bottom: 2px solid gold;">Socal Media</h1>
+    <h1 class="text-body" style="border-bottom: 2px solid gold;">Social Media</h1>
     <h1 class="text-danger" id="error_msg_from_backendside"> </h1>
     <h2>Signup </h2>
     <form action="#">
@@ -64,7 +65,7 @@
     
     <div id="goto_signup" class="d-flex justify-content-center">
 
-        <a href="http://15.207.107.243/auth/login/"><button class="btn btn-primary" >Login</button></a>
+        <a href="/auth/login/"><button class="btn btn-primary" >Login</button></a>
     </div>
 </div>
 

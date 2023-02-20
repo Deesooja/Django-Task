@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+  <!-- <script>
+    var BASE_URL = "{{ BASE_URL }}";
+  </script> -->
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -29,8 +32,9 @@
 </head>
 
 <body class="row">
-<input type="hidden" id="user_id" value="">
-<input type="hidden" id="csrf_token" value="{{csrf_token}}">
+  <input type="hidden" id="user_id" value="">
+  <input type="hidden" id="csrf_token" value="{{csrf_token}}">
+  <input type="hidden" id="base_url" value="">
 
   <div class=" col-sm-2 ">
     <div class="sidebar">

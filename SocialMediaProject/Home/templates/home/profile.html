@@ -64,8 +64,11 @@
         <div class="col-sm-4  d-flex " id="profile_user_info_div">
 
             <div class="card border - border-danger" style="width: 25rem;">
-
+                {% if user.profile_image.url %}
                 <img class="card-img-top" src="{{user.profile_image.url}}" alt="Card image cap" id="cart_profile_image">
+                {% else %}
+                <img class="card-img-top" src="https://t3.ftcdn.net/jpg/05/03/24/40/360_F_503244059_fRjgerSXBfOYZqTpei4oqyEpQrhbpOML.jpg" alt="Card image cap" id="cart_profile_image">
+                {% endif %}
                 <div class="card-body">
                     <h5 class="card-title"> {{user.name}} </h5>
                     {% if user_check %}

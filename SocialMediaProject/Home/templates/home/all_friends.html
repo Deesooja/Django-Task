@@ -41,7 +41,7 @@
     <div class="col-sm-4">
         <h1>All Friends</h1>
 
-        {% for friend in all_friends %}
+        {% for friend in all_friends_search_user %}
         <div class="card mt-3 ml-2 border - border-primary" style="width: 20rem;" id="cart_main_div">
 
             {% if friend.friend.profile_image.url %}
@@ -53,7 +53,7 @@
 
             {% endif %}
             <div class="card-body">
-                <input type="hidden" id="friend_id_{{friend_request.id}}" value="{{friend.id}}">
+                <input type="hidden" id="friend_id_{{friend.id}}" value="{{friend.id}}">
                 <!-- <h5 class="card-title"> j </h5> -->
                 <p>{{friend.friend.name}}</p>
 
@@ -62,7 +62,39 @@
                     <!-- <button id="acceept" onclick="friend_request_accept(this.id)">Accept</button> -->
 
                     
-                    <a href="http://15.207.107.243/profile/?user_id={{friend.friend.id}}"><button>Profile</button></a>
+                    <a href="/profile/?user_id={{friend.friend.id}}"><button>Profile</button></a>
+
+                    <button id="reject" onclick="unfriend(this.id)"> Unfriend</button>
+                </div>
+
+            </div>
+
+
+        </div>
+        {% endfor %}
+
+        {% for friend in all_friends_search_friend %}
+        <div class="card mt-3 ml-2 border - border-primary" style="width: 20rem;" id="cart_main_div">
+
+            {% if friend.user.profile_image.url %}
+            <img class="card-img-top" src="{{friend.user.profile_image.url}}" alt="Card image cap">
+            {% else%}
+            <img class="card-img-top"
+                src="http://res.cloudinary.com/dq6yi7y9s/image/upload/c_fill,w_400/hvdj3kkekabytnlcfzrl"
+                alt="Card image cap">
+
+            {% endif %}
+            <div class="card-body">
+                <input type="hidden" id="friend_id_{{friend.id}}" value="{{friend.id}}">
+                <!-- <h5 class="card-title"> j </h5> -->
+                <p>{{friend.user.name}}</p>
+
+                <div class="d-flex justify-content-between" id="friend_request_action_div">
+
+                    <!-- <button id="acceept" onclick="friend_request_accept(this.id)">Accept</button> -->
+
+                    
+                    <a href="/profile/?user_id={{friend.user.id}}"><button>Profile</button></a>
 
                     <button id="reject" onclick="unfriend(this.id)"> Unfriend</button>
                 </div>
